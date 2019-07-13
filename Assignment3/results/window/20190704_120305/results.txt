@@ -1,0 +1,37 @@
+DEBUG:Token-level confusion matrix:
+go\gu   PER     ORG     LOC     MISC    O
+PER     2943    43      79      18      66
+ORG     140     1644    106     82      120
+LOC     64      95      1862    33      40
+MISC    42      50      46      1028    102
+O       44      44      18      36      42617
+
+DEBUG:Token-level scores:
+label   acc     prec    rec     f1
+PER     0.99    0.91    0.93    0.92
+ORG     0.99    0.88    0.79    0.83
+LOC     0.99    0.88    0.89    0.89
+MISC    0.99    0.86    0.81    0.83
+O       0.99    0.99    1.00    0.99
+micro   0.99    0.98    0.98    0.98
+macro   0.99    0.90    0.88    0.89
+not-O   0.99    0.89    0.87    0.88
+
+INFO:Entity level P/R/F1: 0.81/0.85/0.83
+
+x : Columbus discovered the new land, and the city Columbus was named after him.
+y*:
+y': PER      O          O   O   O     O   O   O    ORG      O   O     O     O
+
+x : Columbus discovered the new land, and a city called Columbus was named after him.
+y*:
+y': PER      O          O   O   O     O   O O    O      PER      O   O     O     O   O
+
+x : Columbus discovered the new land, and the city called Columbus was named after him.
+y*:
+y': PER      O          O   O   O     O   O   O    O      PER      O   O     O     O
+
+x : The Ohio State University, commonly referred to as Ohio State or OSU, is a large public research university in Columbus, Ohio.
+y*:
+y': O   LOC  O     MISC        O        O        O  O  ORG  LOC   O  ORG  O  O O     O      O        O          O  PER       PER
+
